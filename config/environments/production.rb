@@ -43,7 +43,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -56,8 +56,8 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  config.active_job.queue_adapter     = :resque
-  config.active_job.queue_name_prefix = "epicenter_#{Rails.env}"
+  # config.active_job.queue_adapter     = :resque
+  # config.active_job.queue_name_prefix = "epicenter_production"
 
   config.action_mailer.perform_caching = false
 
@@ -114,15 +114,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-
-  # settings below here were brought over from pre-rails-6-upgrade
-  config.action_mailer.default_url_options = { host: 'https://epicenter.epicodus.com' }
-  config.action_mailer.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :authentication => :plain,
-  }
-  config.action_mailer.delivery_method = :smtp
 end

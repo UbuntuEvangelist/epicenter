@@ -70,20 +70,4 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-
-  # settings below here were brought over from pre-rails-6-upgrade
-  config.assets.raise_runtime_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-
-  config.action_mailer.delivery_method = :letter_opener
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.rails_logger = true
-    EmailClient.enable_test_mode
-  end
-  config.active_job.queue_adapter = :resque
-
-  # allow for testing with ngrok
-  config.hosts << /[a-z0-9-]+\.ngrok\.io/
 end
