@@ -1,11 +1,25 @@
 ruby '2.7.6'
 
+gem "nokogiri"
+
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.6'
-gem 'pg'
+gem 'coffee-rails', '~> 5.0'
+gem 'activesupport'
+gem 'activestorage', '~> 7.0', '>= 7.0.4'
+gem 'activerecord', '~> 7.0', '>= 7.0.4'
+gem 'activemodel', '~> 7.0', '>= 7.0.4'
+gem 'activejob', '~> 7.0', '>= 7.0.4'
+gem 'actionview', '~> 7.0', '>= 7.0.4'
+gem 'actiontext', '~> 7.0', '>= 7.0.4'
+gem 'actionpack', '~> 7.0', '>= 7.0.4'
+gem 'actionmailer', '~> 7.0', '>= 7.0.4'
+# gem 'actionmailbox', '~> 0.1.0'
+gem 'rails', '~> 7.0', '>= 7.0.4'
+gem 'pg', '~> 1.4', '>= 1.4.3'
 gem 'uglifier'
 gem 'jquery-rails'
+gem 'actioncable', '~> 7.0', '>= 7.0.4'
 gem 'coffee-script'
 gem 'devise'
 gem 'devise_invitable'
