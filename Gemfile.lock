@@ -113,10 +113,9 @@ GEM
     childprocess (4.1.0)
     chunky_png (1.4.0)
     cliver (0.3.2)
-    closeio (3.9.0)
-      faraday
-      faraday_middleware
-      json
+    closeio (1.0.7)
+      crack (>= 0.1.8)
+      httparty (>= 0.11.0)
     coderay (1.1.3)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
@@ -169,39 +168,32 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.11.0)
+    excon (0.93.0)
     execjs (2.8.1)
-    factory_bot (4.11.1)
-      activesupport (>= 3.0.0)
-    factory_bot_rails (4.11.1)
-      factory_bot (~> 4.11.1)
-      railties (>= 3.0.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
-    faraday (1.10.2)
-      faraday-em_http (~> 1.0)
-      faraday-em_synchrony (~> 1.0)
-      faraday-excon (~> 1.1)
-      faraday-httpclient (~> 1.0)
-      faraday-multipart (~> 1.0)
-      faraday-net_http (~> 1.0)
-      faraday-net_http_persistent (~> 1.0)
-      faraday-patron (~> 1.0)
-      faraday-rack (~> 1.0)
-      faraday-retry (~> 1.0)
+    faraday (2.6.0)
+      faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
-    faraday-em_http (1.0.0)
-    faraday-em_synchrony (1.0.0)
-    faraday-excon (1.1.0)
-    faraday-httpclient (1.0.1)
-    faraday-multipart (1.0.4)
-      multipart-post (~> 2)
-    faraday-net_http (1.0.1)
-    faraday-net_http_persistent (1.2.0)
+    faraday-excon (2.1.0)
+      excon (>= 0.27.4)
+      faraday (~> 2.0)
+    faraday-httpclient (2.0.1)
+      httpclient (>= 2.2)
+    faraday-net_http (3.0.0)
+    faraday-net_http_persistent (2.1.0)
+      faraday (~> 2.5)
+      net-http-persistent (~> 4.0)
     faraday-patron (1.0.0)
-    faraday-rack (1.0.0)
-    faraday-retry (1.0.3)
-    faraday_middleware (1.2.0)
-      faraday (~> 1.0)
+    faraday-rack (2.0.0)
+      faraday (~> 2.0)
+    faraday-retry (2.0.0)
+      faraday (~> 2.0)
     ffi (1.15.5)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
@@ -215,12 +207,13 @@ GEM
       multi_json
     hirb (0.7.3)
     hodel_3000_compliant_logger (0.1.1)
-    http-accept (1.7.0)
+    http-accept (2.2.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
+    httpclient (2.8.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jquery-datatables-rails (3.4.0)
@@ -277,18 +270,18 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.16.3)
     mono_logger (1.1.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    multipart-post (2.2.3)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     nested_form_fields (0.8.4)
       coffee-rails (>= 3.2.1)
       jquery-rails
       rails (>= 3.2.0)
+    net-http-persistent (4.0.1)
+      connection_pool (~> 2.2)
     net-imap (0.3.1)
       net-protocol
     net-pop (0.1.2)
@@ -300,8 +293,7 @@ GEM
     netrc (0.11.0)
     newrelic_rpm (8.10.1)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -334,8 +326,7 @@ GEM
     paranoia (2.6.0)
       activerecord (>= 5.1, < 7.1)
     pg (1.4.3)
-    plaid (16.0.0)
-      faraday (~> 1.0, >= 1.0.1)
+    plaid (4.0.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -407,8 +398,7 @@ GEM
       multi_json (~> 1.0)
       redis-namespace (~> 1.6)
       sinatra (>= 0.9.2)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -457,8 +447,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    shoulda-matchers (4.0.0.rc1)
-      activesupport (>= 4.2.0)
+    shoulda-matchers (5.2.0)
+      activesupport (>= 5.2.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -480,11 +470,11 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stripe (5.55.0)
-    stripe-ruby-mock (3.0.1)
+    stripe (7.1.0)
+    stripe-ruby-mock (2.5.8)
       dante (>= 0.2.0)
       multi_json (~> 1.0)
-      stripe (> 5, < 6)
+      stripe (>= 2.0.3)
     sync (0.5.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
@@ -523,7 +513,7 @@ GEM
     zeitwerk (2.6.1)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   actioncable (~> 7.0, >= 7.0.4)
@@ -558,11 +548,20 @@ DEPENDENCIES
   devise-two-factor
   devise_invitable
   dotenv-rails
-  factory_bot_rails (~> 4.11)
+  factory_bot_rails (~> 6.2)
   faker
+  faraday (~> 2.6)
+  faraday-excon (~> 2.1)
+  faraday-httpclient (~> 2.0, >= 2.0.1)
+  faraday-net_http (~> 3.0)
+  faraday-net_http_persistent (~> 2.0, >= 2.0.1)
+  faraday-patron (~> 1.0)
+  faraday-rack (~> 2.0)
+  faraday-retry (~> 2.0)
   font-awesome-rails
   hellosign-ruby-sdk
   hirb
+  http-accept (~> 2.2)
   httparty
   jquery-datatables-rails
   jquery-rails
@@ -599,12 +598,13 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   selenium-webdriver
-  shoulda-matchers (= 4.0.0.rc1)
+  shoulda-matchers (~> 5.2)
   simplecov
+  simplecov-html
   spring
   sprockets-rails
-  stripe
-  stripe-ruby-mock (~> 3.0.1)
+  stripe (~> 7.1)
+  stripe-ruby-mock
   textacular
   uglifier
   validate_url
@@ -615,4 +615,4 @@ RUBY VERSION
    ruby 2.7.6p219
 
 BUNDLED WITH
-   2.1.4
+   2.3.23
